@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <title>zean pogi</title>
+    <style>
+        /* CSS para maitago ang mga video sa simula */
+        .video-container {
+            margin-top: 20px;
+        }
+
+        /* Ang class na ito ang magtatago at magpapakita ng video */
+        .myVideo {
+            display: none; /* Lahat ng video ay nakatago sa simula */
+            width: 90%;
+            max-width: 540px; /* Limitahan ang laki ng video */
+            height: auto;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center;">Pogi ba ako?</h1>
+
+    <button onclick="showVideo('video1')">Nooo!!</button>
+    <button onclick="showVideo('video2')">Yess^^</button>
+
+    <hr>
+
+    <div class="video-container">
+
+        <video id="video1" class="myVideo" controls>
+            <source src="videoplayback - Trim.mp4" type="video/mp4">
+            Ang iyong browser ay hindi sumusuporta sa video tag.
+        </video>
+
+        <video id="video2" class="myVideo" controls>
+             <source src="videoplayback 2 - Trim.mp4" type="video/mp4">
+            Ang iyong browser ay hindi sumusuporta sa video tag.
+        </video>
+
+    </div>
+
+
+    <script>
+        function showVideo(videoIdToShow) {
+            // Unang hakbang: Kumuha ng listahan ng lahat ng video
+            var allVideos = document.getElementsByClassName('myVideo');
+
+            // Ikalawang hakbang: Itago ang lahat ng video at i-pause ang mga ito
+            for (var i = 0; i < allVideos.length; i++) {
+                allVideos[i].style.display = 'none'; // Itago
+                allVideos[i].pause(); // I-pause para mag-reset
+            }
+
+            // Ikatlong hakbang: Ipakita ang napiling video
+            var selectedVideo = document.getElementById(videoIdToShow);
+            if (selectedVideo) {
+                selectedVideo.style.display = 'block';
+                selectedVideo.play(); // Ipakita
+                // Opsyonal: I-play kaagad ang video
+                // selectedVideo.play();
+            }
+        }
+    </script>
+
+</body>
+</html>
